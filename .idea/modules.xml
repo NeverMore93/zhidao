@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/zhidao.iml" filepath="$PROJECT_DIR$/zhidao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/zhidao_main.iml" filepath="$PROJECT_DIR$/.idea/modules/zhidao_main.iml" group="zhidao" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/zhidao_test.iml" filepath="$PROJECT_DIR$/.idea/modules/zhidao_test.iml" group="zhidao" />
+    </modules>
+  </component>
+</project>
