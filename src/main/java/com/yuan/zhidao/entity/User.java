@@ -4,7 +4,7 @@ package com.yuan.zhidao.entity;
 import com.yuan.zhidao.enums.Gender;
 import lombok.*;
 import org.apache.commons.lang3.ArrayUtils;
-import org.joda.time.LocalDateTime;
+//import org.joda.time.LocalDateTime;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 import java.util.List;
 
 //@NotNull: The CharSequence, Collection, Map or Array object is not null, but can be empty.
@@ -69,8 +70,8 @@ public class User implements UserDetails {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @Column(name = "updated")
-    private LocalDateTime updated;
+//    @Column(name = "updated")
+//    private LocalDateTime updated;
 
 
     public List<GrantedAuthority> getAuthorities(){
@@ -102,13 +103,13 @@ public class User implements UserDetails {
         return this.enabled;
     }
 
-    @PrePersist
-    private void prePersist() {
-        updated = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    private void preUpdate() {
-        updated = LocalDateTime.now();
-    }
+//    @PrePersist
+//    private void prePersist() {
+//        updated = LocalDateTime.now();
+//    }
+//
+//    @PreUpdate
+//    private void preUpdate() {
+//        updated = LocalDateTime.now();
+//    }
 }
