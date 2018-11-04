@@ -1,7 +1,8 @@
 package com.yuan.zhidao.service;
 
 
-import com.yuan.zhidao.UserDao;
+import com.yuan.zhidao.dao.UserDao;
+import com.yuan.zhidao.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -43,6 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userDao.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User:"+username+" not found!"));
+         User user = userDao.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User:"+username+" not found!"));
+         return (UserDetails)user;
     }
 }

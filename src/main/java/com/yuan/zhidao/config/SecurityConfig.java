@@ -28,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource(name ="userService" )
     private UserService userService;
 
-    private UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter;
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -38,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
+        http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/hello").permitAll().anyRequest().authenticated();
 //        http.authorizeRequests().mvcMatchers("/hello").permitAll);
 //        http.addFilter(usernamePasswordAuthenticationFilter);

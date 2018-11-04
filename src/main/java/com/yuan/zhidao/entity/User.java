@@ -46,12 +46,12 @@ public class User implements UserDetails {
     private String password;
 
     @Column(name = "gender")
-    private Gender gender;
+    private String gender;
 
-    @Getter(AccessLevel.NONE)
+//    @Getter(AccessLevel.NONE)
     @NotEmpty
     @Column(name = "authorities")
-    private String[] authorities;
+    private String authority;
 
 
     @Getter(AccessLevel.NONE)
@@ -75,11 +75,10 @@ public class User implements UserDetails {
 
 
     public List<GrantedAuthority> getAuthorities(){
-        return AuthorityUtils.createAuthorityList(authorities);
+        return AuthorityUtils.createAuthorityList(authority);
     }
 
     public List<GrantedAuthority> addAuthorities(String authority) {
-        authorities = ArrayUtils.add( authorities, authority );
         return AuthorityUtils.commaSeparatedStringToAuthorityList(authority);
     }
 
@@ -102,6 +101,10 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return this.enabled;
     }
+
+//    UserDetails toUserDetails(){
+//        return new UserDetails(this.credentialsNonExpired,this.authorities,this.AccountNonLocked,this.AccountNonExpired,this.enabled);
+//    }
 
 //    @PrePersist
 //    private void prePersist() {
