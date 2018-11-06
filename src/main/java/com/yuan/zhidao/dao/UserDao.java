@@ -14,9 +14,9 @@ import java.util.Optional;
 @Component
 public interface UserDao extends JpaRepository<User, Long> {
 
-    <S extends User> Optional<User>  saveAndFlush(UserDetails userDetails);
+    Optional<User>  saveAndFlush(User user);
 
-    <S extends User> Optional<User> findUserByUsername(String username);
+    Optional<User> findUserByUsername(String username);
 
-    <S extends User> Optional<User> findUserByUsernameOrEmail(String username, String email);
+    Optional<User> findUserByUsernameOrEmail(String username, String email);
 }

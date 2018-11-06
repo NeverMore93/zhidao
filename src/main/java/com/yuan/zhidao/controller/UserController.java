@@ -20,7 +20,6 @@ public class UserController {
     @PostMapping(value = "/user")
     @ResponseStatus(code=HttpStatus.CREATED )
     public User createUser(@RequestBody User user){
-        userService.createUser(user);
-        return (User)userService.loadUserByUsername(user.getUsername());
+        return userService.addUser(user);
     }
 }

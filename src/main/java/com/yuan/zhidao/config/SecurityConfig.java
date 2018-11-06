@@ -17,6 +17,8 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.annotation.Resource;
@@ -36,8 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+
         super.configure(http);
         http.csrf().disable();
+        http.formLogin().loginProcessingUrl("/login").successHandler(new SavedRequestAwareAuthenticationSuccessHandler()).failureHandler(new ExceptionMappingAuthenticationFailureHandler());
 //        http.authorizeRequests().antMatchers("/hello").permitAll().anyRequest().authenticated();
 //        http.authorizeRequests().mvcMatchers("/hello").permitAll);
 //        http.addFilter(usernamePasswordAuthenticationFilter);
