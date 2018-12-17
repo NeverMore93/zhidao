@@ -1,5 +1,7 @@
 package com.yuan.zhidao.filter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.yuan.zhidao.entity.Identity;
 import org.apache.commons.io.IOUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -21,12 +23,20 @@ public class IdentityPasswordAuthenticationFilter extends AbstractAuthentication
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         if(request.getMethod().equals("POST")){
+            Identity identity = null;
+            ObjectMapper objectMapper = new ObjectMapper();
             try {
                 String reqStr = IOUtils.toString(request.getReader());
+                identity = objectMapper.readValue(reqStr,Identity.class);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            String identityStr = identity.getIdentity();
+            String password = identity.getPassword();
+
         }
+
 
         return null;
     }

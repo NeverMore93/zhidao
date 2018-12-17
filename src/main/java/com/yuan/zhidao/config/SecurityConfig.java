@@ -55,8 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean(name = "passwordEncoder")
     PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
     @Bean(name = "daoAuthenticationProvider")
